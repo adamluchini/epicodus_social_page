@@ -106,11 +106,6 @@ namespace Codex.Objects
 
       cmd.Parameters.Add(emailParameter);
 
-      SqlParameter md3Parameter = new SqlParameter();
-      md3Parameter.ParameterName = "@md3";
-      md3Parameter.Value = this.GetDueDate();
-
-      cmd.Parameters.Add(md3Parameter);
 
       rdr = cmd.ExecuteReader();
 
