@@ -86,8 +86,5 @@ namespace Codex.Objects
         counter++;
       return counter;
     }
-
-
-
   }
 }

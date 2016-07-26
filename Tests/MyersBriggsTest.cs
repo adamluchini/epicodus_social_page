@@ -75,7 +75,6 @@ namespace Codex.Tests
       Assert.Equal(0, firstMyersBriggs.Match(secondMyersBriggs));
     }
 
-
     public void Dispose()
     {
       MyersBriggs.DeleteAll(new string[] {"myers_briggs"});
