@@ -15,6 +15,7 @@ namespace Codex.Objects
     private string _linkedin;
     private string _email;
     private int _enrollment;
+    private MyersBriggs _myersbriggs;
 
     public Profile(int experience, int style, string home, int portland, string github, string linkedin, string email, int enrollment, int Id = 0)
     {
@@ -26,7 +27,7 @@ namespace Codex.Objects
       _github = github;
       _linkedin = linkedin;
       _email = email;
-      _class = enrollment;
+      _enrollment = enrollment;
     }
 
     public int GetId()
