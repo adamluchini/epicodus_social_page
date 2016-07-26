@@ -34,12 +34,52 @@ namespace Codex.Tests
       Assert.Equal(newMyersBriggs.id, result);
     }
 
+    [Fact]
+    public void Test_Match_PerfectMatch()
+    {
+      MyersBriggs firstMyersBriggs = new MyersBriggs(false, true, false, true);
+      MyersBriggs secondMyersBriggs = new MyersBriggs(true, true, true, true);
+      firstMyersBriggs.Save();
+      secondMyersBriggs.Save();
+
+      Assert.Equal(3,  firstMyersBriggs.Match(secondMyersBriggs));
+    }
+    [Fact]
+    public void Test_Match_GoodMatch()
+    {
+      MyersBriggs firstMyersBriggs = new MyersBriggs(true, true, false, true);
+      MyersBriggs secondMyersBriggs = new MyersBriggs(true, true, true, true);
+      firstMyersBriggs.Save();
+      secondMyersBriggs.Save();
+
+      Assert.Equal(2, firstMyersBriggs.Match(secondMyersBriggs));
+    }
+    [Fact]
+    public void Test_Match_OkayMatch()
+    {
+      MyersBriggs firstMyersBriggs = new MyersBriggs(true, true, true, true);
+      MyersBriggs secondMyersBriggs = new MyersBriggs(true, true, true, true);
+      firstMyersBriggs.Save();
+      secondMyersBriggs.Save();
+
+      Assert.Equal(1, firstMyersBriggs.Match(secondMyersBriggs));
+    }
+    [Fact]
+    public void Test_Match_NoMatch()
+    {
+      MyersBriggs firstMyersBriggs = new MyersBriggs(true, false, true, false);
+      MyersBriggs secondMyersBriggs = new MyersBriggs(true, true, true, true);
+      firstMyersBriggs.Save();
+      secondMyersBriggs.Save();
+
+      Assert.Equal(0, firstMyersBriggs.Match(secondMyersBriggs));
+    }
+
+
     public void Dispose()
     {
       MyersBriggs.DeleteAll(new string[] {"myers_briggs"});
       Console.WriteLine("");
     }
-
-
   }
 }

@@ -75,6 +75,18 @@ namespace Codex.Objects
       }
     }
 
+    public int Match(MyersBriggs mb)
+    {
+      int counter = 0;
+      if(this._ei != mb._ei)
+        counter++;
+      if(this._ns == mb._ns && this._tf == mb._tf)
+        counter++;
+      if(this._pj != mb._pj)
+        counter++;
+      return counter;
+    }
+
 
 
   }
