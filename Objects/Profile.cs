@@ -9,10 +9,6 @@ namespace Codex.Objects
     private int _id;
     private int _experience;
     private int _style;
-    private bool _ei;
-    private bool _ns;
-    private bool _tf;
-    private bool _pj;
     private int _portland;
     private string _home;
     private string _github;
@@ -20,15 +16,11 @@ namespace Codex.Objects
     private string _email;
     private int _enrollment;
 
-    public Profile(int experience, int style, bool ei, bool ns, bool tf, bool pj, string home, int portland, string github, string linkedin, string email, int enrollment, int Id = 0)
+    public Profile(int experience, int style, string home, int portland, string github, string linkedin, string email, int enrollment, int Id = 0)
     {
       _id = Id;
       _experience = experience;
       _style = style;
-      _ei = ei;
-      _ns = ns;
-      _tf = tf;
-      _pj = pj;
       _portland = portland;
       _home = home;
       _github = github;
@@ -64,50 +56,6 @@ namespace Codex.Objects
     public void SetStyle(int style)
     {
       _style = style;
-    }
-    public bool ei
-    {
-      get
-      {
-        return _ei;
-      }
-      set
-      {
-        _ei = value;
-      }
-    }
-    public bool ns
-    {
-      get
-      {
-        return _ns;
-      }
-      set
-      {
-        _ns = value;
-      }
-    }
-    public bool tf
-    {
-      get
-      {
-        return _tf;
-      }
-      set
-      {
-        _tf = value;
-      }
-    }
-    public bool pj
-    {
-      get
-      {
-        return _pj;
-      }
-      set
-      {
-        _pj = value;
-      }
     }
     public string home
     {
