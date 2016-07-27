@@ -1,63 +1,68 @@
-// using System.Collections.Generic;
-// using System;
-// using System.Data;
-// using System.Data.SqlClient;
-//
-//
-// namespace Codex.Objects
-// {
-//   public class Message : SavableObject<Message>
-//   {
-//     private string _callNumber;
-//     private string _collection;
-//     private string _title;
-//     public static string table
-//     {
-//       get
-//       {
-//         return "messages";
-//       }
-//     }
-//     public string title
-//     {
-//       get
-//       {
-//         return _title;
-//       }
-//       set
-//       {
-//         _title = value;
-//       }
-//     }
-//     public string message_text
-//     {
-//       get
-//       {
-//         return _callNumber;
-//       }
-//       set
-//       {
-//         _callNumber = value;
-//       }
-//     }
-//     public string collection
-//     {
-//       get
-//       {
-//         return _collection;
-//       }
-//       set
-//       {
-//         _collection = value;
-//       }
-//     }
-//     public Message(string CallNumber, string Collection, string Title, int Id=0)
-//     {
-//       id = Id;
-//       _callNumber = CallNumber;
-//       _collection = Collection;
-//       _title = Title;
-//     }
+using System.Collections.Generic;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+
+
+namespace Codex.Objects
+{
+  public class Message_Post : SavableObject<Message_Post>
+  {
+    private string _body;
+    private int _profile_id;
+    private string _timestamp;
+    private string _title;
+    private int _type_id;
+
+    // public static string table
+    // {
+    //   get
+    //   {
+    //     return "messages";
+    //   }
+    // }
+    // public string title
+    // {
+    //   get
+    //   {
+    //     return _title;
+    //   }
+    //   set
+    //   {
+    //     _title = value;
+    //   }
+    // }
+    // public string message_text
+    // {
+    //   get
+    //   {
+    //     return _callNumber;
+    //   }
+    //   set
+    //   {
+    //     _callNumber = value;
+    //   }
+    // }
+    // public string collection
+    // {
+    //   get
+    //   {
+    //     return _collection;
+    //   }
+    //   set
+    //   {
+    //     _collection = value;
+    //   }
+    // }
+    // public Message(string CallNumber, string Collection, string Title, int Id=0)
+    // {
+    //   id = Id;
+    //   _callNumber = CallNumber;
+    //   _collection = Collection;
+    //   _title = Title;
+    // }
+  }
+}
 //     public List<Copy> GetCopies()
 //     {
 //       DBObjects dbo = DBObjects.CreateCommand("SELECT * FROM copies WHERE book_id=@Id;", new List<string> {"@Id"}, new List<object> {id});
