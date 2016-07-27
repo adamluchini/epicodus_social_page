@@ -43,7 +43,18 @@ namespace Codex.Tests
       secondProfile.Save();
       List<Profile> result =  new List<Profile> {firstProfile};
 
-      Assert.Equal(result, Match.MatchPerfect(secondProfile));
+      Assert.Equal(result, Match.MatchMBs(secondProfile, "perfect"));
+    }
+    [Fact]
+    public void Test_Match_GoodMatch()
+    {
+      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:false, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:1, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      firstProfile.Save();
+      secondProfile.Save();
+      List<Profile> result =  new List<Profile> {firstProfile};
+
+      Assert.Equal(result, Match.MatchMBs(secondProfile, "good"));
     }
     public void Dispose()
     {
