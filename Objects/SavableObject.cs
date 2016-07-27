@@ -135,11 +135,12 @@ namespace Codex.Objects
         propertyValues[i] = GetDatabaseValue(rdr, i+1, properties[i].PropertyType);
       }
       propertyValues[propertyValues.Length-1] = rdr.GetInt32(0);
-      Console.WriteLine("Expected ID value-Construct from DB:"  + rdr.GetInt32(0));
+      //Console.WriteLine("Expected ID value-Construct from DB:"  + rdr.GetInt32(0));
       return (T)Activator.CreateInstance(typeof(T), propertyValues);
     }
     private static object GetDatabaseValue(SqlDataReader rdr, int index, Type t)
     {
+      //Console.WriteLine("Index:" + index.ToString() + " type: " + t.ToString());
       if(t.ToString()=="System.Int32")
       {
         return rdr.GetInt32(index);
@@ -154,6 +155,7 @@ namespace Codex.Objects
       }
       else if(t.ToString()=="System.Boolean")
       {
+        //Console.WriteLine("Trying to cast at index:" + index.ToString());
         return rdr.GetBoolean(index);
       }
 
