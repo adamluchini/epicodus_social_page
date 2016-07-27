@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Epicodus Social</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  <link rel='stylesheet' href="/Content/css/styles.css">
+</head>
+<body>
+  <div class="page-header">
+    <h1>Epicodex Social</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <table class="table table-striped">
+          <tbody>
+            <thead>
+              <tr>
+                <th>
+                  <form action="/test" method="post">
+                    <button type="submit"  class="btn-primary">New Post</button>
+                    <label for="band-select-name"></label>
+                    <button type = "submit" class="btn-primary" style="float: right;">Filter Posts</button>
+                    <select name="band-select-name" style="float: right;">
+                      <option value="0" selected="selected">View All</option>
+                      <option>Announcements</option>
+                    </select>
+                  </form>
+                </th>
+              </tr>
+            </thead>
+            <tr>
+              <td>
+                <h4>Category</h4>
+                <h3>Title of Post</h3>
+                <p>
+                  Post Author
+                </p>
+                <table>
+                  <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                      <p>
+                        Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. There’s no need to add a class to buttons as they use a pseudo-class. However, you can still force the same active appearance with .active (and include the aria-pressed="true" attribute) should you need to replicate the state programmatically.
+                      </p>
+                    </td>
+                    <td>
+                      <form action="/test" method="post">
+                        <button type="submit">Add Comment</button>
+                      </form>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <form action="/test" method="post">
+                        <button type="submit">+</button>
+                      </form>
+                      <p>
+                        5 Likes
+                      </p>
+                    </td>
+                    <td>
+
+                      <blockquote>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        <footer>Comment Author</footer>
+                      </blockquote>
+                    </td>
+                    <td>
+
+                    </td>
+                  </tr>
+                </table>
+
+
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h1>Row</h1>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h1>Row</h1>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h1>Row</h1>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h1>Row</h1>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="row-height">
+
+
+            <h1><div class="btn-group  btn-group-justified" data-toggle="buttons">
+              <label class="btn btn-primary active">
+                <input type="checkbox" checked autocomplete="off"> Match
+              </label>
+              <label class="btn btn-primary">
+                <input type="checkbox" autocomplete="off"> Resources
+              </label>
+            </div></h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-height">
+
+            <form action="/test" method="post">
+              <button type = "submit" class="btn-primary" style="float: right;">Suggest Pair</button>
+              <select name="band-select-name" style="float: right;">
+                <option value="0" selected="selected">Myers-Briggs</option>
+                <option>Hobbies</option>
+                <option>Experience</option>
+              </select>
+            </form>
+
+            <h3>Perfect Matches</h3>
+            <table>
+              <tr>
+                <td>
+                  JoeBob
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  BillyRay
+                </td>
+              </tr>
+            </table>
+            <h3>Good Matches</h3>
+            <table>
+              <tr>
+                <td>
+                  Lucille
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Mabel
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
