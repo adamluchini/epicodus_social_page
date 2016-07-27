@@ -11,9 +11,9 @@ namespace Codex.Objects
     private bool _ns;
     private bool _tf;
     private bool _pj;
-    private int profile_id;
+    private int _profile_id;
 
-    public MyersBriggs (bool Ei, bool Ns, bool Pj, bool Tf, int Id = 0)
+    public MyersBriggs (bool Ei, bool Ns, bool Pj, int Profile_id, bool Tf, int Id = 0)
     {
       id = Id;
       Console.WriteLine("Constructor input values: " + Ei + Ns + Tf + Pj + Id.ToString());
@@ -21,6 +21,8 @@ namespace Codex.Objects
       _ns = Ns;
       _tf = Tf;
       _pj = Pj;
+      _profile_id = Profile_id;
+
     }
         public static string table
         {
@@ -74,15 +76,26 @@ namespace Codex.Objects
         _pj = value;
       }
     }
+    public int profile_id
+    {
+      get
+      {
+        return _profile_id;
+      }
+      set
+      {
+        _profile_id = value;
+      }
+    }
 
     public int Match(MyersBriggs mb)
     {
       int counter = 0;
-      if(this._ei != mb._ei)
+      if(this._ei != mb.ei)
         counter++;
-      if(this._ns == mb._ns && this._tf == mb._tf)
+      if(this._ns == mb.ns && this._tf == mb.tf)
         counter++;
-      if(this._pj != mb._pj)
+      if(this._pj != mb.pj)
         counter++;
       return counter;
     }
