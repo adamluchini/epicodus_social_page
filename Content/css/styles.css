@@ -1,0 +1,22 @@
+h1 {
+  text-align: center;
+
+}
+td {
+  padding: 10px;
+  ;
+}
+table { border-spacing: 2px;
+  border-collapse: separate;;;
+
+}
+.row-height {
+  display: table;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.btn-right {
+  align: : right;
+}
