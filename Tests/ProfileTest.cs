@@ -35,7 +35,7 @@ namespace Codex.Tests
       Assert.Equal(newProfile.id, result);
     }
     [Fact]
-    public void Test_Match_PerfectlyMatch()
+    public void Test_Match_PerfectlyMatchMB()
     {
       Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
       Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:1, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
@@ -46,7 +46,7 @@ namespace Codex.Tests
       Assert.Equal(result, Match.MatchMBs(secondProfile, "perfect"));
     }
     [Fact]
-    public void Test_Match_GoodMatch()
+    public void Test_Match_GoodMatchMB()
     {
       Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:false, Pj:true, Portland:1, Style:1, Tf:true);
       Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:1, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
@@ -55,6 +55,39 @@ namespace Codex.Tests
       List<Profile> result =  new List<Profile> {firstProfile};
 
       Assert.Equal(result, Match.MatchMBs(secondProfile, "good"));
+    }
+    [Fact]
+    public void Test_Match_PerfectlyMatchXP()
+    {
+      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      firstProfile.Save();
+      secondProfile.Save();
+      List<Profile> result =  new List<Profile> {firstProfile};
+
+      Assert.Equal(result, Match.MatchXPs(secondProfile, "perfect"));
+    }
+    [Fact]
+    public void Test_Match_GoodMatchXP()
+    {
+      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:false, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:1, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      firstProfile.Save();
+      secondProfile.Save();
+      List<Profile> result =  new List<Profile> {firstProfile};
+
+      Assert.Equal(result, Match.MatchXPs(secondProfile, "good"));
+    }
+    [Fact]
+    public void Test_Match_PerfectlyMatchElse()
+    {
+      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      firstProfile.Save();
+      secondProfile.Save();
+      List<Profile> result =  new List<Profile> {firstProfile};
+
+      Assert.Equal(result, Match.MatchElses(secondProfile, "perfect"));
     }
     public void Dispose()
     {
