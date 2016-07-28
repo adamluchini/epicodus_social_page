@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 
-namespace Codex.Objects
+namespace Codex
 {
   public class Message_Post : SavableObject<Message_Post>
   {

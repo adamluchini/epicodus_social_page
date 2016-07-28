@@ -49,6 +49,66 @@ namespace Codex.Objects
       _tf = Tf;
     }
 
+    public static Profile Login(string email)
+    {
+      SqlConnection conn = DB.Connection();
+      SqlDataReader rdr = null;
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM profiles WHERE email = @Email;", conn);
+      SqlParameter emailParameter = new SqlParameter();
+      emailParameter.ParameterName = "Email";
+      emailParameter.Value = email;
+      cmd.Parameters.Add(emailParameter);
+      rdr = cmd.ExecuteReader();
+
+      int foundId = 0;
+      bool foundEi = false;
+      string foundEmail = null;
+      int foundEnrollment = 0;
+      int foundExperience = 0;
+
+      string foundGithub = null;
+      string foundHome = null;
+      string foundLinkedin = null;
+      string foundName = null;
+      bool foundNs = false;
+      bool foundPj = false;
+      int foundPortland = 0;
+      int foundStyle = 0;
+      bool foundTf = false;
+
+      while(rdr.Read())
+      {
+        foundId = rdr.GetInt32(0);
+        foundEi = rdr.GetBoolean(1);
+        foundEmail = rdr.GetString(2);
+        foundEnrollment = rdr.GetInt32(3);
+        foundExperience = rdr.GetInt32(4);
+        foundGithub = rdr.GetString(5);
+        foundHome = rdr.GetString(6);
+        foundLinkedin = rdr.GetString(7);
+        foundName = rdr.GetString(8);
+        foundNs = rdr.GetBoolean(9);
+        foundPj = rdr.GetBoolean(10);
+        foundPortland = rdr.GetInt32(11);
+        foundStyle = rdr.GetInt32(12);
+        foundTf = rdr.GetBoolean(13);
+      }
+
+      Profile foundProfile = new Profile(foundEi, foundEmail, foundEnrollment, foundExperience, foundGithub, foundHome, foundLinkedin, foundName, foundNs, foundPj, foundPortland, foundStyle, foundTf, foundId);
+
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return foundProfile;
+    }
+
     public override bool Equals(System.Object otherProfile)
     {
       if (!(otherProfile is Profile))

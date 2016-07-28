@@ -11,7 +11,10 @@ namespace Codex
     {
 
       Get["/"]=_=> {
-        return View["index.cshtml", new List<Profile>{}];
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        model.Add("P", new List<Profile>{});
+        model.Add("G", new List<Profile>{});
+        return View["index.cshtml", model];
       };
 
       Get["/newProfile"] = _ => {
@@ -25,19 +28,42 @@ namespace Codex
         return View ["new_profile.cshtml"];
      };
 
-     Get["/compareProfile"] = _ => {
-       return View["compare.cshtml"];
-     };
-
-
-
-
-      Post["/compare/profile"] = _ => {
-        Console.Write(Int32.Parse(Request.Form["compareProfile"]));
-        Profile p = Profile.Find(Int32.Parse(Request.Form["compareProfile"]));
-        List<Profile> result = Match.MatchMBs(p, "perfect");
-        return View["index.cshtml", result];
+     Post["/match/type"] = _ => {
+       Dictionary<string, object> model = new Dictionary<string, object>();
+        Profile p = Profile.Find(10);
+        List<Profile> resultP;
+        List<Profile> resultG;
+        if(Int32.Parse(Request.Form["band-select-name"]) == 0)
+        {
+          resultP = Match.MatchMBs(p, "perfect");
+          resultG = Match.MatchMBs(p, "good");
+        }
+        else if(Int32.Parse(Request.Form["band-select-name"]) == 2)
+        {
+          resultP = Match.MatchXPs(p, "perfect");
+          resultG = Match.MatchXPs(p, "good");
+        }
+        else
+        {
+          resultP = Match.MatchElses(p, "perfect");
+          resultG = Match.MatchElses(p, "good");
+        }
+        model.Add("P", resultP);
+        model.Add("G", resultG);
+        return View["index.cshtml", model];
       };
+
+    Get["/loginProfile"]=_=>{
+        return View["login.cshtml"];
+    };
+    Post["/login"]=_=>{
+      Profile log = Profile.Login(Request.Form["email"]);
+      Profile.currentId = log.id;
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      model.Add("P", new List<Profile>{});
+      model.Add("G", new List<Profile>{});
+      return View["index.cshtml", model];
+    };
 
 
 

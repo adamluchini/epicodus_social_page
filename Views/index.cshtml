@@ -14,7 +14,7 @@
   <div class="container-fluid">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/newProfile">New Profile</a></li>
-        <li><a href="/compareProfile">enter your profile id in the database</a></li>
+        <li><a href="/loginProfile">Log In</a></li>
       </ul>
     </div>
   </div>
@@ -132,18 +132,25 @@
             <form action="/match/type" method="post">
               <button type = "submit" class="btn-primary" style="float: right;">Suggest Pair</button>
               <select name="band-select-name" style="float: right;">
-                <option value="0" selected="selected">Myers-Briggs</option>
-                <option value="1">Hobbies</option>
-                <option value="2">Experience</option>
+                <option value=0>Myers-Briggs</option>
+                <option value=1>Hobbies</option>
+                <option value=2>Experience</option>
               </select>
             </form>
 
-<h3>Perfect Matches</h3>
-<ul>
-  @foreach(var p in Model){
-    <li>@p.name</li>
-  }
-</ul>
+            <h3>Perfect Matches</h3>
+            <ul>
+              @foreach(var p in @Model["P"]){
+                <li>@p.name</li>
+              }
+            </ul>
+
+            <h3>Good Matches</h3>
+            <ul>
+              @foreach(var p in @Model["G"]){
+                <li>@p.name</li>
+              }
+            </ul>
 
 
           </div>
