@@ -91,7 +91,7 @@ namespace Codex.Tests
     }
     public void Dispose()
     {
-      Profile.DeleteAll(new string[] {"profile"});
+      Profile.DeleteAll(new string[] {"profiles"});
       Console.WriteLine("");
     }
   }
