@@ -1,0 +1,29 @@
+
+#page_title{
+  padding-bottom: 3px;
+  border-bottom: 2px;
+  border-bottom-style: solid;
+}
+
+form {
+  text-align: center;
+}
+
+#message-body {
+  height: 200px;
+  width: 600px;
+
+}
+.message_text{
+    color: white;
+}
+
+#message {
+  background-color: #3173a8;
+
+}
+
+h2 {
+  text-align: center;
+
+}
