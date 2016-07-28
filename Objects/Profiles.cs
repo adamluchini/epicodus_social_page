@@ -7,6 +7,7 @@ namespace Codex.Objects
   public class Profile: SavableObject<Profile>
   {
     // private int _id;
+    public static int currentId;
     private bool _ei;
     private string _email;
     private int _enrollment;
@@ -66,7 +67,7 @@ namespace Codex.Objects
     {
       get
       {
-        return "profile";
+        return "profiles";
       }
     }
 
