@@ -11,50 +11,48 @@ namespace Codex
     {
 
       Get["/"]=_=> {
-        return View["index.cshtml"];
+        return View["index.cshtml", new List<Profile>{}];
       };
 
       Get["/newProfile"] = _ => {
         return View["new_profile.cshtml"];
       };
 
-      // Post["/test"] = parameters => {
+      Post["/create"] = _ => {
+        Profile p = new Profile(Request.Form["ei"], Request.Form["email"], Request.Form["enrollment"], Request.Form["experience"], Request.Form["github"], Request.Form["home"], Request.Form["Linkedin"], Request.Form["name"], Request.Form["ns"], Request.Form["pj"], 1, Request.Form["style"], Request.Form["tf"]);
+        p.Save();
+        Profile.currentId = p.id;
+        return View ["new_profile.cshtml"];
+     };
+
+     Get["/compareProfile"] = _ => {
+       return View["compare.cshtml"];
+     };
+
+
+
+
+      Post["/compare/profile"] = _ => {
+        Console.Write(Int32.Parse(Request.Form["compareProfile"]));
+        Profile p = Profile.Find(Int32.Parse(Request.Form["compareProfile"]));
+        List<Profile> result = Match.MatchMBs(p, "perfect");
+        return View["index.cshtml", result];
+      };
+
+
+
+
+
+
+      // Post["/match/type"] = _ => {
+      //   Profile compareProfile = Profile.Find(Request.Form["compareProfile"]);
+      //   List<Profile> result;
       //   if(Request.Form["band-select-name"] == 0)
       //   {
-      //
-      //   };
-      //   Patron patron = Patron.Find(patronId);
-      //
-      //   Dictionary<string, object> model = new Dictionary<string, object>();
-      //   // List<Copy> book_checkouts = Patron.GetCheckOuts();
-      //   List<Copy> patron_checkouts = Copy.GetCheckedOutCopies(patron);
-      //   //List<Book> history = Patron.GetHistory();
-      //   Console.WriteLine("# checkouts:" + patron_checkouts.Count);
-      //   model.Add("patron", patron);
-      //   model.Add("checkouts", patron_checkouts);
-      //   //model.Add("history", allClients);
-      //   return View ["/patron.cshtml", model];
+      //     result = Match.MatchMBs(compareProfile, "perfect");
+      //   }
+      //   return View ["index.cshtml", result];
       // };
-//
-//       Patch["patrons/Renew"] = _ => {
-//         Copy copy = Copy.Find(Request.Form["copy-id"]);
-//         copy.Renew();
-//
-//         int patronId = Request.Form["patron-id"];
-//         Patron patron = Patron.Find(patronId);
-//
-//         Dictionary<string, object> model = new Dictionary<string, object>();
-//         // List<Copy> book_checkouts = Patron.GetCheckOuts();
-//         List<Copy> patron_checkouts = Copy.GetCheckedOutCopies(patron);
-//         //List<Book> history = Patron.GetHistory();
-//         Console.WriteLine("# checkouts:" + patron_checkouts.Count);
-//         model.Add("patron", patron);
-//         model.Add("checkouts", patron_checkouts);
-//         //model.Add("history", allClients);
-//         return View ["/patron.cshtml", model];
-//
-//      };
-
     }
   }
 }
