@@ -64,21 +64,6 @@ namespace Codex
       model.Add("G", new List<Profile>{});
       return View["index.cshtml", model];
     };
-
-
-
-
-
-
-      // Post["/match/type"] = _ => {
-      //   Profile compareProfile = Profile.Find(Request.Form["compareProfile"]);
-      //   List<Profile> result;
-      //   if(Request.Form["band-select-name"] == 0)
-      //   {
-      //     result = Match.MatchMBs(compareProfile, "perfect");
-      //   }
-      //   return View ["index.cshtml", result];
-      // };
-    }
+   }
   }
 }
