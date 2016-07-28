@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Epicodus Social</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href="../Content/css/styles.css">
+  </head>
+  <body>
+    <div class="page-header">
+      <h1>Epicodex Social</h1>
+    </div>
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">New Profile</a></li>
+          <li><a href="#">Sign In</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container" id="message">
+      <h2 class="message_text" id="page_title">Add A Message</h2><ln>
+      <form action="@Model.GetId()/addmessage" method="post">
+        <label for="message-title"  class="message_text">Title</label><br>
+        <input id="message-title" name="message-title" type="text"><br>
+        <label for="message-body"  class="message_text">Message</label><br>
+        <input id="message-body" name="message-body" type="text"><br>
+        <button type="submit" id="space">Add</button>
+      </form>
+    </div>
+  </body>
+</html>

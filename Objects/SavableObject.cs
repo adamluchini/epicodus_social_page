@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
 
-namespace Codex.Objects
+namespace Codex
 {
   public class SavableObject<T> where T : SavableObject<T>
   {
