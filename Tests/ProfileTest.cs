@@ -25,7 +25,7 @@ namespace Codex.Tests
     [Fact]
     public void Test_FindCopy()
     {
-      Profile newProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:1, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile newProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:1, Github:"github", Home:"home", Linkedin:"linkedin", Name:"Jim", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
       newProfile.Save();
 
       //Act
@@ -37,8 +37,8 @@ namespace Codex.Tests
     [Fact]
     public void Test_Match_PerfectlyMatchMB()
     {
-      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
-      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:1, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Name:"Jim", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:1, Github:"github", Home:"home", Linkedin:"linkedin", Name:"Jim", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
       firstProfile.Save();
       secondProfile.Save();
       List<Profile> result =  new List<Profile> {firstProfile};
@@ -48,8 +48,8 @@ namespace Codex.Tests
     [Fact]
     public void Test_Match_GoodMatchMB()
     {
-      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:false, Pj:true, Portland:1, Style:1, Tf:true);
-      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:1, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Name:"Jim", Ns:false, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:1, Github:"github", Home:"home", Linkedin:"linkedin", Name:"Jim", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
       firstProfile.Save();
       secondProfile.Save();
       List<Profile> result =  new List<Profile> {firstProfile};
@@ -59,8 +59,8 @@ namespace Codex.Tests
     [Fact]
     public void Test_Match_PerfectlyMatchXP()
     {
-      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
-      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Name:"Jim", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Name:"Jim", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
       firstProfile.Save();
       secondProfile.Save();
       List<Profile> result =  new List<Profile> {firstProfile};
@@ -70,8 +70,8 @@ namespace Codex.Tests
     [Fact]
     public void Test_Match_GoodMatchXP()
     {
-      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:false, Pj:true, Portland:1, Style:1, Tf:true);
-      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:1, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Name:"Jim", Ns:false, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:1, Experience:1, Github:"github", Home:"home", Linkedin:"linkedin", Name:"Jim", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
       firstProfile.Save();
       secondProfile.Save();
       List<Profile> result =  new List<Profile> {firstProfile};
@@ -81,8 +81,8 @@ namespace Codex.Tests
     [Fact]
     public void Test_Match_PerfectlyMatchElse()
     {
-      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
-      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile firstProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Name:"Jim", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
+      Profile secondProfile = new Profile(Ei:true, Email:"email", Enrollment:2, Experience:2, Github:"github", Home:"home", Linkedin:"linkedin", Name:"Jim", Ns:true, Pj:true, Portland:1, Style:1, Tf:true);
       firstProfile.Save();
       secondProfile.Save();
       List<Profile> result =  new List<Profile> {firstProfile};

@@ -14,11 +14,13 @@ namespace Codex.Objects
     private string _github;
     private string _home;
     private string _linkedin;
+    private string _name;
     private bool _ns;
     private bool _pj;
     private int _portland;
     private int _style;
     private bool _tf;
+
 
     public Profile(
     bool Ei,
@@ -27,7 +29,8 @@ namespace Codex.Objects
     int Experience,
     string Github,
     string Home,
-    string Linkedin, bool Ns, bool Pj, int Portland, int Style, bool Tf, int Id = 0)
+    string Linkedin,
+    string Name, bool Ns, bool Pj, int Portland, int Style, bool Tf, int Id = 0)
     {
       id = Id;
       _ei = Ei;
@@ -37,6 +40,7 @@ namespace Codex.Objects
       _github = Github;
       _home = Home;
       _linkedin = Linkedin;
+      _name = Name;
       _ns = Ns;
       _pj = Pj;
       _portland = Portland;
@@ -131,6 +135,17 @@ namespace Codex.Objects
       set
       {
         _linkedin = value;
+      }
+    }
+    public string name
+    {
+      get
+      {
+        return _name;
+      }
+      set
+      {
+        _name = value;
       }
     }
     public string email
