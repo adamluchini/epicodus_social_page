@@ -22,15 +22,15 @@ namespace Codex
       };
 
       Post["/create"] = _ => {
-        Profile p = new Profile(Request.Form["ei"], Request.Form["email"], Request.Form["enrollment"], Request.Form["experience"], Request.Form["github"], Request.Form["home"], Request.Form["Linkedin"], Request.Form["name"], Request.Form["ns"], Request.Form["pj"], 1, Request.Form["style"], Request.Form["tf"]);
+        Profile p = new Profile(Request.Form["ei"], Request.Form["email"], Request.Form["enrollment"], Request.Form["experience"], Request.Form["github"], Request.Form["home"], Request.Form["Linkedin"], Request.Form["name"], Request.Form["ns"], Request.Form["pj"], Request.Form["portland"], Request.Form["style"], Request.Form["tf"]);
         p.Save();
         Profile.currentId = p.id;
-        return View ["new_profile.cshtml"];
+        return View ["success.cshtml"];
      };
 
      Post["/match/type"] = _ => {
        Dictionary<string, object> model = new Dictionary<string, object>();
-        Profile p = Profile.Find(10);
+        Profile p = Profile.Find(Profile.currentId);
         List<Profile> resultP;
         List<Profile> resultG;
         if(Int32.Parse(Request.Form["band-select-name"]) == 0)

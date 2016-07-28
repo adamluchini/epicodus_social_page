@@ -87,6 +87,7 @@ namespace Codex.Objects
       List<Profile> allProfiles = Profile.GetAll();
 
       List<Profile> resultPerfect = new List<Profile> {};
+      List<Profile> resultGood = new List<Profile> {};
       foreach(var profile in allProfiles)
       {
         if(profile.id != p.id)
@@ -94,15 +95,21 @@ namespace Codex.Objects
           if(Match.MatchElse(p, profile) == "perfectly"){
             resultPerfect.Add(profile);
           }
+          if(Match.MatchElse(p, profile) == "good"){
+            resultGood.Add(profile);
+          }
         }
       }
-      return resultPerfect;
+      if(choice == "perfect")  return resultPerfect;
+      else return resultGood;
     }
 
     public static string MatchElse(Profile P1, Profile P2)
     {
       if( P1.enrollment == P2.enrollment)
         return "perfectly";
+      else if(P1.style == P2.style)
+        return "good";
       else return "no match";
     }
 

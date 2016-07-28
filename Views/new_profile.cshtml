@@ -35,6 +35,15 @@
             <input id="home" class="form-control" type="text"  name="home">
           </div>
           <div class="form-group">
+            <label for="portland">How long have you been in Portland?</label>
+            <select id="portland"  name="portland">
+              <option></option>
+              <option value=1>under 1 year</option>
+              <option value=2>1-5 years</option>
+              <option value=3>over 5 years</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label for="enrollment">Which class are you currently enrolled in:</label>
             <select id="enrollment"  name="enrollment">
               <option></option>
@@ -118,6 +127,7 @@
           </div>
         </div>
       <button type="submit" class="btn">Make Profile</button>
+      <a href="/"><button type="button" class="btn btn-success">Back to Home</button></a>
     </form>
   </div>
 </body>
