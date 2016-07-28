@@ -11,7 +11,14 @@ namespace Codex
     {
 
       Get["/"]=_=> {
+        MessageManager manager = new MessageManager(1);
         Dictionary<string, object> model = new Dictionary<string, object>();
+        // foreach(var a in manager.GetMessages()){
+        //   Console.Write(a);
+        // }
+        // Console.Write(manager.GetMessages());
+        model.Add("manager" , manager);
+
         model.Add("P", new List<Profile>{});
         model.Add("G", new List<Profile>{});
         return View["index.cshtml", model];
@@ -19,6 +26,10 @@ namespace Codex
 
       Get["/newProfile"] = _ => {
         return View["new_profile.cshtml"];
+      };
+
+      Get["/message/add"] = _ => {
+        return View["add_message.cshtml"];
       };
 
       Post["/create"] = _ => {
@@ -59,7 +70,9 @@ namespace Codex
     Post["/login"]=_=>{
       Profile log = Profile.Login(Request.Form["email"]);
       Profile.currentId = log.id;
+      MessageManager manager = new MessageManager(log.id);
       Dictionary<string, object> model = new Dictionary<string, object>();
+      model.Add("manager" , manager);
       model.Add("P", new List<Profile>{});
       model.Add("G", new List<Profile>{});
       return View["index.cshtml", model];
