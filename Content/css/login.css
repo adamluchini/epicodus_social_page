@@ -1,0 +1,41 @@
+form {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
+}
+
+
+a {
+
+  color: black;
+}
+
+.LogButton {
+
+  color: black;
+}
+
+#name {
+  margin-bottom: -15px;
+  padding-bottom: 10px;
+}
+
+
+
+
+.message {
+  background-color: #3173a8;
+  color: white;
+  height: 300px;
+  width: 600px;
+}

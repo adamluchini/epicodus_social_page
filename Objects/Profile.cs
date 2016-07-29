@@ -131,6 +131,11 @@ namespace Codex.Objects
       }
     }
 
+    public int GetId()
+    {
+      return id;
+    }
+
     public int experience
     {
       get

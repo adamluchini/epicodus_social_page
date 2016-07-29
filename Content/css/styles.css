@@ -1,6 +1,17 @@
+body {
+  align-content: center;
+}
+
 h1 {
   text-align: center;
+}
 
+h3 {
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
 }
 
 td {
@@ -20,4 +31,18 @@ table { border-spacing: 2px;
 
 .btn-right {
   align: : right;
+}
+
+a {
+
+  color: white;
+}
+
+a.title-name{
+
+  color: black;
+}
+
+#name {
+  margin-bottom: -15px;
 }

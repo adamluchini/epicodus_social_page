@@ -9,7 +9,11 @@ namespace Codex.Objects
 {
   public class MessageManager
   {
+
     private int _profile_id;
+
+    private int _id;
+
     private List<Message_Post> _messages;
 //private List<Comment[]> _comments;
 
