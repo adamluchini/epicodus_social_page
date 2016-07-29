@@ -21,14 +21,13 @@ namespace Codex.Objects
       public List<Message_Post> GetMessages()
       {
         var messages = GetAllNonHobbyMessagesForCurrentProfile();
-        // Console.WriteLine(GetAllHobbyMessages().Count);
         messages.AddRange(GetAllHobbyMessages());
 
         var sort = from m in messages
         orderby m.timestamp descending
         select m;
-
-        return messages;//(List<Message_Post>)sort;
+        var posts = m.ToList();
+        return posts;
       }
 
       public List<Message_Post> GetAllNonHobbyMessagesForCurrentProfile()
@@ -67,7 +66,6 @@ namespace Codex.Objects
       public List<Comment> GetComments(int message_id)
       {
         DBObjects dbo = DBObjects.CreateCommand("SELECT * FROM comments WHERE comments.message_Id = @Id;", new List<string> {"@Id"},  new List<object> {message_id});
-        // DBObjects dbo = DBObjects.CreateCommand("SELECT * FROM messages_posts WHERE  type_id != 4;");
         SqlDataReader rdr = dbo.RDR;
         rdr = dbo.CMD.ExecuteReader();
         Console.WriteLine("message id in get comment"+message_id);
