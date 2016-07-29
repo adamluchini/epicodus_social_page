@@ -11,9 +11,43 @@ namespace Codex
     {
 
       Get["/"]=_=> {
+        Profile foundProfile = Profile.Find(1);
         Dictionary<string, object> model = new Dictionary<string, object>();
         model.Add("P", new List<Profile>{});
         model.Add("G", new List<Profile>{});
+        model.Add("profileId", foundProfile);
+        return View["index.cshtml", model];
+      };
+
+      Get["/{id}"]=parameters=> {
+        Profile foundProfile = Profile.Find(parameters.id);
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        model.Add("P", new List<Profile>{});
+        model.Add("G", new List<Profile>{});
+        model.Add("profileId", foundProfile);
+        return View["index.cshtml", model];
+      };
+      Get["/addmessage/{id}"]= parameters => {
+        Profile log = Profile.Find(parameters.id);
+        Profile.currentId = log.id;
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        model.Add("P", new List<Profile>{});
+        model.Add("G", new List<Profile>{});
+        model.Add("profileId", log);
+        return View["add_message.cshtml", model];
+      };
+
+      Post["/profile/{id}/done"]= parameters => {
+        Profile log = Profile.Find(parameters.id);
+        Profile.currentId = log.id;
+        int personId = log.id;
+        DateTime today = DateTime.Now;
+        Message_Post newMessage_Post = new Message_Post(Request.Form["message-body"], personId, today, Request.Form["message-title"], Request.Form["type-id"]);
+        newMessage_Post.Save();
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        model.Add("P", new List<Profile>{});
+        model.Add("G", new List<Profile>{});
+        model.Add("profileId", log);
         return View["index.cshtml", model];
       };
 
@@ -52,9 +86,14 @@ namespace Codex
         model.Add("G", resultG);
         return View["index.cshtml", model];
       };
-
-    Get["/loginProfile"]=_=>{
-        return View["login.cshtml"];
+    Get["/loginProfile/{id}"]=parameters=>{
+      Profile log = Profile.Find(parameters.id);
+      Profile.currentId = log.id;
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      model.Add("P", new List<Profile>{});
+      model.Add("G", new List<Profile>{});
+      model.Add("profileId", log);
+      return View["login.cshtml", model];
     };
     Post["/login"]=_=>{
       Profile log = Profile.Login(Request.Form["email"]);
@@ -62,6 +101,7 @@ namespace Codex
       Dictionary<string, object> model = new Dictionary<string, object>();
       model.Add("P", new List<Profile>{});
       model.Add("G", new List<Profile>{});
+      model.Add("profileId", log);
       return View["index.cshtml", model];
     };
 

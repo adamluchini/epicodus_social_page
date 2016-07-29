@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   <title>Epicodus Social</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-  <link rel='stylesheet' href="/Content/css/styles.css">
+  <link rel='stylesheet' href="/../Content/css/styles.css">
 </head>
 <body>
   <div class="page-header">
-    <h1>Epicodex Social</h1>
+    <h1>Epicodex</h1>
   </div>
   <nav class="navbar navbar-default">
   <div class="container-fluid">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/newProfile">New Profile</a></li>
-        <li><a href="/loginProfile">Log In</a></li>
+        <li><a href="/loginProfile/@Model["profileId"].GetId()">Log In</a></li>
       </ul>
     </div>
   </div>
@@ -28,7 +28,7 @@
               <tr>
                 <th>
                   <form action="/test" method="post">
-                    <button type="submit"  class="btn-primary">New Post</button>
+                    <button type="submit"  class="btn-primary new_post"><a href="/addmessage/@Model["profileId"].GetId()">New Post</a></button>
                     <label for="band-select-name"></label>
                     <button type = "submit" class="btn-primary" style="float: right;">Filter Posts</button>
                     <select name="band-select-name" style="float: right;">
