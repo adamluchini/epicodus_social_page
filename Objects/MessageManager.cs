@@ -66,7 +66,6 @@ namespace Codex.Objects
       public List<Comment> GetComments(int message_id)
       {
         DBObjects dbo = DBObjects.CreateCommand("SELECT * FROM comments WHERE comments.message_Id = @Id;", new List<string> {"@Id"},  new List<object> {message_id});
-        // DBObjects dbo = DBObjects.CreateCommand("SELECT * FROM messages_posts WHERE  type_id != 4;");
         SqlDataReader rdr = dbo.RDR;
         rdr = dbo.CMD.ExecuteReader();
         Console.WriteLine("message id in get comment"+message_id);
