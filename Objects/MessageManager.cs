@@ -27,11 +27,11 @@ namespace Codex.Objects
         var messages = GetAllNonHobbyMessagesForCurrentProfile();
         messages.AddRange(GetAllHobbyMessages());
 
-        var sort = from m in messages
-        orderby m.timestamp descending
-        select m;
-        var posts = m.ToList();
-        return posts;
+        // var sort = from m in messages
+        // orderby m.timestamp descending
+        // select m;
+        // var posts = m.ToList();
+        return messages;
       }
 
       public List<Message_Post> GetAllNonHobbyMessagesForCurrentProfile()

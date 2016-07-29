@@ -29,9 +29,10 @@
                 <th>
                   <form action="/test" method="post">
 
-                    <a href="/message/add"><button type="button"  class="btn-primary">New Post</button></a>
 
-                    <button type="submit"  class="btn-primary new_post"><a href="/addmessage/@Model["profileId"].GetId()">New Post</a></button>
+
+                    <button type="submit"  class="btn-primary new_post">
+                    <a href="/addmessage/@Model["profileId"].GetId()">New Post</a></button>
 
                     <label for="band-select-name"></label>
                     <button type = "click" class="btn-primary" style="float: right;">Filter Posts</button>
@@ -136,14 +137,14 @@
               </select>
             </form>
 
-            <h3>Perfect Matches</h3>
+            <h3 class="to-left">Perfect Matches</h3>
             <ul>
               @foreach(var p in @Model["P"]){
                 <li>@p.name</li>
               }
             </ul>
 
-            <h3>Good Matches</h3>
+            <h3 class="to-left">Good Matches</h3>
             <ul>
               @foreach(var p in @Model["G"]){
                 <li>@p.name</li>

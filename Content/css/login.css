@@ -31,11 +31,12 @@ a {
 }
 
 
-
+.white-words {
+  color: white;
+}
 
 .message {
   background-color: #3173a8;
-  color: white;
   height: 300px;
   width: 600px;
 }

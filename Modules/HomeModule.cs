@@ -26,10 +26,12 @@ namespace Codex
 
       Get["/{id}"]=parameters=> {
         Profile foundProfile = Profile.Find(parameters.id);
+        MessageManager manager = new MessageManager(foundProfile.id);
         Dictionary<string, object> model = new Dictionary<string, object>();
         model.Add("P", new List<Profile>{});
         model.Add("G", new List<Profile>{});
         model.Add("profileId", foundProfile);
+        model.Add("manager" , manager);
         return View["index.cshtml", model];
       };
       Get["/addmessage/{id}"]= parameters => {
@@ -47,12 +49,14 @@ namespace Codex
         Profile.currentId = log.id;
         int personId = log.id;
         DateTime today = DateTime.Now;
+        MessageManager manager = new MessageManager(log.id);
         Message_Post newMessage_Post = new Message_Post(Request.Form["message-body"], personId, today, Request.Form["message-title"], Request.Form["type-id"]);
         newMessage_Post.Save();
         Dictionary<string, object> model = new Dictionary<string, object>();
         model.Add("P", new List<Profile>{});
         model.Add("G", new List<Profile>{});
         model.Add("profileId", log);
+        model.Add("manager" , manager);
         return View["index.cshtml", model];
       };
 
@@ -72,6 +76,8 @@ namespace Codex
      };
 
      Post["/match/type"] = _ => {
+        Profile log = Profile.Find(Profile.currentId);
+        Profile.currentId = log.id;
        Dictionary<string, object> model = new Dictionary<string, object>();
         Profile p = Profile.Find(Profile.currentId);
         List<Profile> resultP;
@@ -95,6 +101,7 @@ namespace Codex
         model.Add("manager" , manager);
         model.Add("P", resultP);
         model.Add("G", resultG);
+        model.Add("profileId", log);
         return View["index.cshtml", model];
       };
     Get["/loginProfile/{id}"]=parameters=>{

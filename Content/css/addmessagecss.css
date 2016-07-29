@@ -33,3 +33,8 @@ h5 {
   color: white;
 
 }
+#message-body {
+  height: 80px;
+  width: 400px;
+
+}
