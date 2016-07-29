@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 
-namespace Codex
+namespace Codex.Objects
 {
   public class Message_Post : SavableObject<Message_Post>
   {
@@ -35,6 +35,11 @@ namespace Codex
         bool idEquality = (this.id == newMessage_Post.id);
         return (idEquality);
       }
+    }
+
+    public string GetName()
+    {
+      return Profile.Find(_profile_id).name;
     }
     public static string table
     {

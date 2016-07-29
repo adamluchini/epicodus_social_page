@@ -39,13 +39,18 @@
                 </th>
               </tr>
             </thead>
+            @foreach(var a in Model["manager"].GetMessages())
+            {
+
+
             <tr>
               <td>
                 <h4>Category</h4>
-                <h3>Title of Post: @Model["manager"].GetMessages()[0].title</h3>
+                <h3>Title of Post: @a.title</h3>
                 <p>
-                  Post Author
+                  @a.GetName()
                 </p>
+
                 <table>
                   <tr>
                     <td>
@@ -53,7 +58,7 @@
                     </td>
                     <td>
                       <p>
-                        @Model["manager"].GetMessages()[0].body
+                        @a.body
                       </p>
                     </td>
                     <td>
@@ -62,6 +67,8 @@
                       </form>
                     </td>
                   </tr>
+                  @foreach(var c in @Model["manager"].GetCommets(a.id))
+                  {
                   <tr>
                     <td>
                       <form action="/test" method="post">
@@ -74,7 +81,7 @@
                     <td>
 
                       <blockquote>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        <p>@c.</p>
                         <footer>Comment Author</footer>
                       </blockquote>
                     </td>
@@ -82,31 +89,14 @@
 
                     </td>
                   </tr>
+                }
                 </table>
 
 
               </td>
             </tr>
-            <tr>
-              <td>
-                <h1>Row</h1>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h1>Row</h1>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h1>Row</h1>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h1>Row</h1>
-              </td>
-            </tr>
+          }
+
           </tbody>
         </table>
 

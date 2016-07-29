@@ -18,7 +18,7 @@ namespace Codex
         // }
         // Console.Write(manager.GetMessages());
         model.Add("manager" , manager);
-
+        //model.Add("name" , Profile.Find(1).name);
         model.Add("P", new List<Profile>{});
         model.Add("G", new List<Profile>{});
         return View["index.cshtml", model];
@@ -72,6 +72,7 @@ namespace Codex
       Profile.currentId = log.id;
       MessageManager manager = new MessageManager(log.id);
       Dictionary<string, object> model = new Dictionary<string, object>();
+      //model.Add("name", Profile.Find(log.id).name);
       model.Add("manager" , manager);
       model.Add("P", new List<Profile>{});
       model.Add("G", new List<Profile>{});
