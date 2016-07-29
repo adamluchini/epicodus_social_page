@@ -54,6 +54,40 @@ namespace Codex.Objects
         dbo.Close();
         return all;
       }
+      public List<List<Comment>> GetCommentsLists ()
+      {
+        List<List<Comment>> commentsLists = new List<List<Comment>> {};
+        foreach (Message_Post message in _messages) {
+          commentsLists.Add(GetComments(message.id));
+          Console.WriteLine("reading message in getcommentslists");
+        }
+        return commentsLists;
+      }
+
+      public List<Comment> GetComments(int message_id)
+      {
+        DBObjects dbo = DBObjects.CreateCommand("SELECT * FROM comments WHERE comments.message_Id = @Id;", new List<string> {"@Id"},  new List<object> {message_id});
+        // DBObjects dbo = DBObjects.CreateCommand("SELECT * FROM messages_posts WHERE  type_id != 4;");
+        SqlDataReader rdr = dbo.RDR;
+        rdr = dbo.CMD.ExecuteReader();
+        Console.WriteLine("message id in get comment"+message_id);
+        List<Comment> all = new List<Comment> {};
+        while(rdr.Read())
+        {
+          Console.WriteLine("reading comment in get comment");
+          all.Add(new Comment(
+            rdr.GetString(1),
+            rdr.GetInt32(2),
+            rdr.GetInt32(3),
+            rdr.GetInt32(4),
+            rdr.GetInt32(0)
+          ));
+        }
+
+        dbo.Close();
+        return all;
+
+      }
 
       public List<Message_Post> GetAllHobbyMessages()
       {
