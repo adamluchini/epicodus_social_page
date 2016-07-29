@@ -28,9 +28,9 @@
               <tr>
                 <th>
                   <form action="/test" method="post">
-                    <button type="submit"  class="btn-primary">New Post</button>
+                    <a href="/message/add"><button type="button"  class="btn-primary">New Post</button></a>
                     <label for="band-select-name"></label>
-                    <button type = "submit" class="btn-primary" style="float: right;">Filter Posts</button>
+                    <button type = "click" class="btn-primary" style="float: right;">Filter Posts</button>
                     <select name="band-select-name" style="float: right;">
                       <option value="0" selected="selected">View All</option>
                       <option>Announcements</option>
@@ -42,7 +42,7 @@
             <tr>
               <td>
                 <h4>Category</h4>
-                <h3>Title of Post</h3>
+                <h3>Title of Post: @Model["manager"].GetMessages()[0].title</h3>
                 <p>
                   Post Author
                 </p>
@@ -53,7 +53,7 @@
                     </td>
                     <td>
                       <p>
-                        Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. There’s no need to add a class to buttons as they use a pseudo-class. However, you can still force the same active appearance with .active (and include the aria-pressed="true" attribute) should you need to replicate the state programmatically.
+                        @Model["manager"].GetMessages()[0].body
                       </p>
                     </td>
                     <td>
