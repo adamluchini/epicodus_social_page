@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 
-namespace Codex
+namespace Codex.Objects
 {
   public class Comment : SavableObject<Comment>
   {
@@ -21,6 +21,10 @@ namespace Codex
       _profileId = ProfileId;
       _totalLikes = TotalLikes;
 
+    }
+    public string GetName()
+    {
+      return Profile.Find(_profileId).name;
     }
     public override bool Equals(System.Object otherComment)
     {

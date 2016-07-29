@@ -13,12 +13,7 @@ namespace Codex
       Get["/"]=_=> {
         MessageManager manager = new MessageManager(1);
         Dictionary<string, object> model = new Dictionary<string, object>();
-        // foreach(var a in manager.GetMessages()){
-        //   Console.Write(a);
-        // }
-        // Console.Write(manager.GetMessages());
         model.Add("manager" , manager);
-        //model.Add("name" , Profile.Find(1).name);
         model.Add("P", new List<Profile>{});
         model.Add("G", new List<Profile>{});
         return View["index.cshtml", model];
@@ -59,6 +54,8 @@ namespace Codex
           resultP = Match.MatchElses(p, "perfect");
           resultG = Match.MatchElses(p, "good");
         }
+        MessageManager manager = new MessageManager(1);
+        model.Add("manager" , manager);
         model.Add("P", resultP);
         model.Add("G", resultG);
         return View["index.cshtml", model];

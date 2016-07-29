@@ -7,7 +7,7 @@ namespace Codex.Objects
   public class Profile: SavableObject<Profile>
   {
     // private int _id;
-    public static int currentId;
+    public static int currentId = 1;
     private bool _ei;
     private string _email;
     private int _enrollment;

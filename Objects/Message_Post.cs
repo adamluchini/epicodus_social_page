@@ -36,7 +36,22 @@ namespace Codex.Objects
         return (idEquality);
       }
     }
+    public string GetCategoryName (int id)
+    {
+      DBObjects dbo = DBObjects.CreateCommand("SELECT messages_types.name FROM messages_types WHERE id=@Id;", new List<string> {"@Id"},  new List<object> {id});
+      SqlDataReader rdr = dbo.RDR;
+      rdr = dbo.CMD.ExecuteReader();
 
+      string result = null;
+      while(rdr.Read())
+      {
+        result = rdr.GetString(0);
+      }
+
+      dbo.Close();
+      return result;
+
+    }
     public string GetName()
     {
       return Profile.Find(_profile_id).name;

@@ -45,8 +45,8 @@
 
             <tr>
               <td>
-                <h4>Category</h4>
-                <h3>Title of Post: @a.title</h3>
+                <h4>Category: @a.GetCategoryName(a.type_id)</h4>
+                <h3>Title: @a.title</h3>
                 <p>
                   @a.GetName()
                 </p>
@@ -67,7 +67,7 @@
                       </form>
                     </td>
                   </tr>
-                  @foreach(var c in @Model["manager"].GetCommets(a.id))
+                  @foreach(var c in @Model["manager"].GetComments(a.id))
                   {
                   <tr>
                     <td>
@@ -81,8 +81,8 @@
                     <td>
 
                       <blockquote>
-                        <p>@c.</p>
-                        <footer>Comment Author</footer>
+                        <p>@c.comment_body</p>
+                        <footer>@c.GetName()</footer>
                       </blockquote>
                     </td>
                     <td>
